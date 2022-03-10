@@ -9,9 +9,7 @@ exports.handler = async (event) => {
       .map(([key, value]) => `${key}=${urlencode.encode(value)}`) // *** 인코딩 문제해결
       .join('&')
       .concat(`&key=${process.env.API_KEY}`);
-      
-    // const URI = `${YOUTUBE_SEARCH_ENDPOINT}?${parameters}`;
-    const URI = `${YOUTUBE_SEARCH_ENDPOINT}?q=hello&pageToken=&maxResults=10&type=video`;
+    const URI = `${YOUTUBE_SEARCH_ENDPOINT}?${parameters}`;
     const response = await fetch(URI);
     const { statusCode, statusText, ok, headers } = response;
     const body = JSON.stringify(await response.json());
