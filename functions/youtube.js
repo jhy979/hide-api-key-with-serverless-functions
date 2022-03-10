@@ -35,7 +35,8 @@ exports.handler = async (event) => {
         body: stringify(body),
       };
     }
-
+    
+    headers['Access-Control-Allow-Origin'] = process.env.HOST; // *** 동일출처정책 문제해결
     return {
       statusCode: 200,
       ok: true,
